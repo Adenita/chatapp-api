@@ -1,13 +1,14 @@
 package mygroup.chatapp.message.entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import mygroup.chatapp.room.entities.Room;
 import mygroup.chatapp.user.entities.User;
 
 @Getter
-@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Message {
     @Id

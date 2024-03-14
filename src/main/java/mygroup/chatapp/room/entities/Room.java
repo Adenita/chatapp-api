@@ -1,15 +1,16 @@
 package mygroup.chatapp.room.entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import mygroup.chatapp.user.entities.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Room {
     @Id
