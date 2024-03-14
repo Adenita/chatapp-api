@@ -6,6 +6,7 @@ import mygroup.chatapp.room.entities.Room;
 import mygroup.chatapp.user.entities.User;
 
 @Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
