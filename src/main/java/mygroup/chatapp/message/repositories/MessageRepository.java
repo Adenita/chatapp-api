@@ -12,4 +12,6 @@ public interface MessageRepository extends JpaRepository<Message, Long> {
     @Query(value="select * from message where user_id = :userId and room_id = :roomId", nativeQuery=true)
     List<Message> getUserMessagesForRoom(Long userId, Long roomId);
 
+    @Query(value="select * from message where room_id = :roomId order by id desc ", nativeQuery=true)
+    List<Message> getRoomMessages(Long roomId);
 }
