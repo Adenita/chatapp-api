@@ -4,5 +4,5 @@ import com.corundumstudio.socketio.SocketIOClient;
 import mygroup.chatapp.message.transports.MessageTransport;
 
 public interface SocketService {
-    public void saveAndBroadcastMessage(SocketIOClient senderClient, MessageTransport messageTransport);
+    void saveAndBroadcastMessage(SocketIOClient senderClient, MessageTransport messageTransport);
 }
