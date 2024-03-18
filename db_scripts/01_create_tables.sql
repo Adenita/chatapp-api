@@ -21,6 +21,5 @@ CREATE TABLE IF NOT EXISTS message (
 
 CREATE TABLE IF NOT EXISTS room_users (
   user_id INT REFERENCES users(id),
-  room_id INT REFERENCES room(id),
-  content varchar(500) NOT NULL
+  room_id INT REFERENCES room(id)
 )
