@@ -55,9 +55,15 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public MessageListTransport getUserMessagesForRoom(Long userId, Long professorId) {
+    public MessageListTransport getUserMessagesForRoom(Long userId, Long roomId) {
         return MessageMapper.toListTransport(
-                MessageMapper.toTransport(messageRepository.getUserMessagesForRoom(userId, professorId))
+                MessageMapper.toTransport(messageRepository.getUserMessagesForRoom(userId, roomId))
         );
     }
+
+    @Override
+    public MessageListTransport getRoomMessages(Long roomId) {
+        return MessageMapper.toListTransport(
+                MessageMapper.toTransport(messageRepository.getRoomMessages(roomId))
+        );    }
 }
