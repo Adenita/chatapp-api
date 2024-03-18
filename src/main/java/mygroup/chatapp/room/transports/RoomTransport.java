@@ -1,13 +1,13 @@
 package mygroup.chatapp.room.transports;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import mygroup.chatapp.room.entities.RoomType;
 
 @Builder
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class RoomTransport {
     private Long id;
     private String name;
