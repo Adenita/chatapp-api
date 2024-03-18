@@ -22,18 +22,16 @@ public class SocketComponent {
     }
 
     private DataListener<MessageTransport> onChatReceived() {
-        return (senderClient, data, ackSender) -> {
-            socketService.saveAndBroadcastMessage(senderClient, data);
-        };
+        return (senderClient, data, ackSender) ->
+                socketService.saveAndBroadcastMessage(senderClient, data);
     }
 
     private ConnectListener onConnected() {
         return (client) -> {
             var params = client.getHandshakeData().getUrlParams();
 
-            String room = "";
             if (params.containsKey("room") && params.get("room") != null) {
-                room = String.join("", params.get("room"));
+                String room = String.join("", params.get("room"));
                 client.joinRoom(room);
             }
 
@@ -44,9 +42,8 @@ public class SocketComponent {
     private DisconnectListener onDisconnected() {
         return client -> {
             var params = client.getHandshakeData().getUrlParams();
-            String room = "";
             if (params.containsKey("room") && params.get("room") != null) {
-                room = String.join("", params.get("room"));
+                String room = String.join("", params.get("room"));
                 client.leaveRoom(room);
             }
         };
