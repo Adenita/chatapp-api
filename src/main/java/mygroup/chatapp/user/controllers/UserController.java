@@ -1,6 +1,8 @@
 package mygroup.chatapp.user.controllers;
 
 import lombok.RequiredArgsConstructor;
+import mygroup.chatapp.room.services.RoomService;
+import mygroup.chatapp.room.transports.RoomListTransport;
 import mygroup.chatapp.user.services.UserService;
 import mygroup.chatapp.user.transports.UserListTransport;
 import mygroup.chatapp.user.transports.UserTransport;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/users")
 public class UserController {
     private final UserService userService;
+    private final RoomService roomService;
     @GetMapping("")
     public UserListTransport getUsers() {
         return userService.getAll();
@@ -21,6 +24,10 @@ public class UserController {
         return userService.get(id);
     }
 
+    @GetMapping("/{username}$")
+    public UserTransport getUserByUsername(@PathVariable String username) {
+        return userService.getUserByUsername(username);
+    }
     @PostMapping("")
     public UserTransport addUser(@RequestBody UserTransport user){
         return userService.save(user);
@@ -34,6 +41,11 @@ public class UserController {
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable Long id) {
         userService.delete(id);
+    }
+
+    @GetMapping("/{id}/rooms")
+    public RoomListTransport getUserRooms(@PathVariable Long id) {
+        return roomService.getUserRooms(id);
     }
 
 }
