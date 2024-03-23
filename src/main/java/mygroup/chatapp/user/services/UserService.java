@@ -6,4 +6,6 @@ import mygroup.chatapp.user.transports.UserTransport;
 
 public interface UserService extends GeneralService<UserTransport, UserListTransport> {
     UserListTransport getRoomUsers(Long userId);
+
+    UserTransport getUserByUsername(String username);
 }

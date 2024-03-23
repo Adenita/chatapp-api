@@ -62,4 +62,10 @@ public class UserServiceImpl implements UserService {
                 UserMapper.toTransport(userRepository.getRoomUsers(userId))
         );
     }
+
+    @Override
+    public UserTransport getUserByUsername(String username) {
+        User user = userRepository.findByUsername(username).orElseThrow();
+        return UserMapper.toTransport(user);
+    }
 }
