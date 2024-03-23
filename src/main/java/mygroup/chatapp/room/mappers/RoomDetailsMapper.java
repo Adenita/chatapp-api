@@ -14,6 +14,7 @@ public class RoomDetailsMapper {
                 .id(room.getId())
                 .name(room.getName())
                 .type(room.getType())
+                .maxUsers(room.getMaxUsers())
                 .users(UserMapper.toTransport(room.getUsers()))
                 .build();
     }
@@ -24,6 +25,7 @@ public class RoomDetailsMapper {
                 .id(roomTransport.getId())
                 .name(roomTransport.getName())
                 .type(roomTransport.getType())
+                .maxUsers(roomTransport.getMaxUsers())
                 .users(UserMapper.toEntity(roomTransport.getUsers()))
                 .build();
     }

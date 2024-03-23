@@ -15,5 +15,6 @@ public class RoomDetailsTransport {
     private Long id;
     private String name;
     private RoomType type;
+    private int maxUsers;
     private List<UserTransport> users;
 }

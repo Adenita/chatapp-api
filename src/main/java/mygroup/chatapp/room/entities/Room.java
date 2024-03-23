@@ -23,6 +23,9 @@ public class Room {
     @Column(insertable = false, updatable = false)
     private RoomType type;
 
+    @Column(name = "max_users")
+    private int maxUsers;
+
     @ManyToMany
     @JoinTable(
             name ="room_users",
