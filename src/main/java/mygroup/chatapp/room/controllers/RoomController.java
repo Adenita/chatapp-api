@@ -6,6 +6,8 @@ import mygroup.chatapp.message.transports.MessageListTransport;
 import mygroup.chatapp.room.services.RoomService;
 import mygroup.chatapp.room.transports.RoomListTransport;
 import mygroup.chatapp.room.transports.RoomTransport;
+import mygroup.chatapp.user.services.UserService;
+import mygroup.chatapp.user.transports.UserListTransport;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 public class RoomController {
     private final RoomService roomService;
     private final MessageService messageService;
+    private final UserService userService;
 
     @GetMapping("")
     public RoomListTransport getRooms() {
@@ -45,4 +48,13 @@ public class RoomController {
         return messageService.getRoomMessages(id);
     }
 
+    @GetMapping("/{id}/users")
+    public UserListTransport getRoomUsers(@PathVariable Long id) {
+        return userService.getRoomUsers(id);
+    }
+
+    @PostMapping("/{id}/join")
+    public void joinRoom(@PathVariable Long id, @RequestParam Long userId) {
+        roomService.joinRoom(userId, id);
+    }
 }
