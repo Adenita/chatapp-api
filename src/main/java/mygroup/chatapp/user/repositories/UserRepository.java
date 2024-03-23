@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-    @Query(value="select * from room_users where room_id = :roomId", nativeQuery=true)
+    @Query(value="select u.* from users u join room_users ru on u.id = ru.user_id where room_id = :roomId", nativeQuery=true)
     List<User> getRoomUsers(Long roomId);
 
     @Query(value = "select * from users where username = :username", nativeQuery = true)

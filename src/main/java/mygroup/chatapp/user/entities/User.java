@@ -27,9 +27,7 @@ public class User implements UserDetails {
     private String password;
 
     @Enumerated(EnumType.STRING)
-    @Column(insertable = false, updatable = false)
     private Role role;
-
 
     @ManyToMany
     @JoinTable(

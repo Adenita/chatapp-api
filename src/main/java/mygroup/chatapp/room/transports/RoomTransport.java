@@ -11,5 +11,6 @@ import mygroup.chatapp.room.entities.RoomType;
 public class RoomTransport {
     private Long id;
     private String name;
+    private int maxUsers;
     private RoomType type;
 }
