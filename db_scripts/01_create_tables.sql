@@ -22,5 +22,6 @@ CREATE TABLE IF NOT EXISTS message (
 
 CREATE TABLE IF NOT EXISTS room_users (
   user_id INT REFERENCES users(id),
-  room_id INT REFERENCES room(id)
+  room_id INT REFERENCES room(id),
+  primary key (user_id, room_id)
 )
