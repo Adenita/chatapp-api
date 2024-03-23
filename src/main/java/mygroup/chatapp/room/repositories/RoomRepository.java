@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface RoomRepository extends JpaRepository<Room, Long> {
-    @Query(value="select * from room_users where user_id = :userId", nativeQuery=true)
+    @Query(value="select r.* from room r join room_users ru on r.id = ru.room_id where user_id = :userId", nativeQuery=true)
     List<Room> getUserRooms(Long userId);
 
 }
