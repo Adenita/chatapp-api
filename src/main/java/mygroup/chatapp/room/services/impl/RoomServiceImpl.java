@@ -1,5 +1,6 @@
 package mygroup.chatapp.room.services.impl;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import mygroup.chatapp.room.entities.Room;
 import mygroup.chatapp.room.mappers.RoomMapper;
@@ -7,12 +8,17 @@ import mygroup.chatapp.room.repositories.RoomRepository;
 import mygroup.chatapp.room.services.RoomService;
 import mygroup.chatapp.room.transports.RoomListTransport;
 import mygroup.chatapp.room.transports.RoomTransport;
+import mygroup.chatapp.user.entities.User;
+import mygroup.chatapp.user.repositories.UserRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class RoomServiceImpl implements RoomService {
     private final RoomRepository roomRepository;
+    private final UserRepository userRepository;
 
     @Override
     public RoomListTransport getAll() {
@@ -60,5 +66,19 @@ public class RoomServiceImpl implements RoomService {
         return RoomMapper.toListTransport(
                 RoomMapper.toTransport(roomRepository.getUserRooms(userId))
         );
+    }
+
+    @Override
+    @Transactional
+    public void joinRoom(Long userId, Long roomId) {
+        RoomTransport room = get(roomId);
+        List<User> roomUsers = userRepository.getRoomUsers(roomId);
+
+        if (roomUsers.size() < room.getMaxUsers()) {
+            roomRepository.joinRoom(userId, roomId);
+            return;
+        }
+
+        throw new RuntimeException("Room capacity is maxed out");
     }
 }

@@ -6,4 +6,6 @@ import mygroup.chatapp.shared.GeneralService;
 
 public interface RoomService extends GeneralService<RoomTransport, RoomListTransport> {
     RoomListTransport getUserRooms(Long userId);
+
+    void joinRoom(Long userId, Long roomId);
 }
