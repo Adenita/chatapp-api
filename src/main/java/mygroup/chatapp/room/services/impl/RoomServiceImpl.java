@@ -81,4 +81,18 @@ public class RoomServiceImpl implements RoomService {
 
         throw new RuntimeException("Room capacity is maxed out");
     }
+
+    @Override
+    public RoomListTransport getUserDMs(Long userId) {
+        return RoomMapper.toListTransport(
+                RoomMapper.toTransport(roomRepository.getUserDMs(userId))
+        );
+    }
+
+    @Override
+    public RoomListTransport getUserChannels(Long userId) {
+        return RoomMapper.toListTransport(
+                RoomMapper.toTransport(roomRepository.getUserChannels(userId))
+        );
+    }
 }

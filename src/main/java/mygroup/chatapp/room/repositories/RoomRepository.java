@@ -16,4 +16,10 @@ public interface RoomRepository extends JpaRepository<Room, Long> {
     @Modifying
     @Query(value="insert into room_users (user_id, room_id) values (:userId, :roomId)", nativeQuery=true)
     void joinRoom(Long userId, Long roomId);
+
+    @Query(value="select r.* from room r join room_users ru on r.id = ru.room_id where user_id = :userId and r.type = 'DM'", nativeQuery=true)
+    List<Room> getUserDMs(Long userId);
+
+    @Query(value="select r.* from room r join room_users ru on r.id = ru.room_id where user_id = :userId and r.type = 'GROUP'", nativeQuery=true)
+    List<Room> getUserChannels(Long userId);
 }

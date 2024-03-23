@@ -48,4 +48,13 @@ public class UserController {
         return roomService.getUserRooms(id);
     }
 
+    @GetMapping("/{id}/dms")
+    public RoomListTransport getUserDMs(@PathVariable Long id) {
+        return roomService.getUserDMs(id);
+    }
+
+    @GetMapping("/{id}/channels")
+    public RoomListTransport getUserChannels(@PathVariable Long id) {
+        return roomService.getUserChannels(id);
+    }
 }
