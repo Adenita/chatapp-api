@@ -95,4 +95,11 @@ public class RoomServiceImpl implements RoomService {
                 RoomMapper.toTransport(roomRepository.getUserChannels(userId))
         );
     }
+
+    @Override
+    public RoomListTransport getAvailableNonUserChannels(Long userId) {
+        return RoomMapper.toListTransport(
+                RoomMapper.toTransport(roomRepository.getAvailableNonUserChannels(userId))
+        );
+    }
 }

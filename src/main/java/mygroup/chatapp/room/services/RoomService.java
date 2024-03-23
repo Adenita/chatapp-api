@@ -9,5 +9,5 @@ public interface RoomService extends GeneralService<RoomTransport, RoomListTrans
     void joinRoom(Long userId, Long roomId);
     RoomListTransport getUserDMs(Long userId);
     RoomListTransport getUserChannels(Long userId);
-
+    RoomListTransport getAvailableNonUserChannels(Long userId);
 }

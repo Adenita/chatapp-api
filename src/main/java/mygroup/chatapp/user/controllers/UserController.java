@@ -57,4 +57,9 @@ public class UserController {
     public RoomListTransport getUserChannels(@PathVariable Long id) {
         return roomService.getUserChannels(id);
     }
+
+    @GetMapping("/{id}/non")
+    public RoomListTransport getAvailableNonUserChannels(@PathVariable Long id) {
+        return roomService.getAvailableNonUserChannels(id);
+    }
 }
