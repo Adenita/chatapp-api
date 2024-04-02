@@ -1,4 +1,4 @@
-# ChatApp
+# VioletVibe - ChatApp
 
 This project is a Spring Boot real-time chat application inspired by platforms like Discord.
 It allows users to chat in real time with other singed up users or in group chats.
