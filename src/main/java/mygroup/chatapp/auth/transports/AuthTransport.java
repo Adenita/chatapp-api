@@ -12,6 +12,7 @@ import mygroup.chatapp.user.entities.Role;
 @NoArgsConstructor
 public class AuthTransport {
     private String token;
+    private String refreshToken;
     private String username;
     private Role role;
 }
