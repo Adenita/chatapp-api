@@ -6,10 +6,7 @@ import mygroup.chatapp.auth.transports.AuthTransport;
 import mygroup.chatapp.auth.transports.LoginTransport;
 import mygroup.chatapp.auth.transports.RegisterTransport;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -25,6 +22,11 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<AuthTransport> login(@RequestBody LoginTransport request) {
         return ResponseEntity.ok(authService.login(request));
+    }
+
+    @PostMapping("/refreshToken")
+    public ResponseEntity<AuthTransport> refreshToken(@RequestBody AuthTransport request) {
+        return ResponseEntity.ok(authService.refreshToken(request));
     }
 
 }
