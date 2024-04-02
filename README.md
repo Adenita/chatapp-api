@@ -19,6 +19,20 @@ config.setHostname("${your-ip-address}");
 with your local IP address in the source code.
 This is necessary for the socket communication.
 
+### Setting up the Database
+This project utilizes a PostgreSQL database managed via Docker. To set up the database, follow these steps:
+1. Ensure you have Docker installed on your system
+2. In your terminal, navigate to the root directory of your project where the Dockerfile is located.
+3. Build the Docker Image for the database by running the following command: 
+```
+docker build . -t chat-db
+```
+4. After building the image, you can run the Docker container with the following command:
+```
+docker run --name chat-database -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d chat-db
+```
+This will start a POSTGRESQL container with the Dockerfile configurations.
+
 ## FrontEnd Compatibility 
 Ensure that the frontend version is compatible with the Netty Socket.IO version used in this project.
 This project uses `netty-socketio: 1.7.18`, which is compatible with `socket.io-client: ^2.1.1`.
