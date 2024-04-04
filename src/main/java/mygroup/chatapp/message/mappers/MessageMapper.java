@@ -18,6 +18,7 @@ public class MessageMapper {
                 .content(message.getContent())
                 .userTransport(UserMapper.toTransport(message.getUser()))
                 .roomTransport(RoomMapper.toTransport(message.getRoom()))
+                .date(message.getDate())
                 .build();
     }
 
@@ -28,6 +29,7 @@ public class MessageMapper {
                 .content(messageTransport.getContent())
                 .user(UserMapper.toEntity(messageTransport.getUserTransport()))
                 .room(RoomMapper.toEntity(messageTransport.getRoomTransport()))
+                .date(messageTransport.getDate())
                 .build();
     }
 
