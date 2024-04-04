@@ -1,8 +1,8 @@
 package mygroup.chatapp.message.services;
 
 import com.corundumstudio.socketio.SocketIOClient;
-import mygroup.chatapp.message.transports.MessageTransport;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
 
 public interface SocketService {
-    void saveAndBroadcastMessage(SocketIOClient senderClient, MessageTransport messageTransport);
+    void saveAndBroadcastMessage(SocketIOClient senderClient, JSONObject messageTransport);
 }
