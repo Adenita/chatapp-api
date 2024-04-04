@@ -5,6 +5,8 @@ import lombok.*;
 import mygroup.chatapp.room.entities.Room;
 import mygroup.chatapp.user.entities.User;
 
+import java.time.Instant;
+
 @Getter
 @Setter
 @Builder
@@ -25,4 +27,6 @@ public class Message {
     private Room room;
 
     private String content;
+
+    private Instant date;
 }

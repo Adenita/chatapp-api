@@ -17,7 +17,8 @@ CREATE TABLE IF NOT EXISTS message (
    id   SERIAL PRIMARY KEY,
    user_id INT REFERENCES users(id),
    room_id INT REFERENCES room(id),
-   content varchar(500) NOT NULL
+   content varchar(500) NOT NULL,
+   date timestamptz NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS room_users (

@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import mygroup.chatapp.room.transports.RoomTransport;
 import mygroup.chatapp.user.transports.UserTransport;
 
+import java.time.Instant;
+
 @Getter
 @Builder
 @NoArgsConstructor
@@ -16,4 +18,5 @@ public class MessageTransport {
     private String content;
     private UserTransport userTransport;
     private RoomTransport roomTransport;
+    private Instant date;
 }
